@@ -5,6 +5,7 @@
 //= link css/tiny-slider.css
 //= link css/tobii.min.css
 //= link css/materialdesignicons.min.css
+//= link bootstrap.bundle.min.js
 //= link tiny-slider.js
 //= link tobii.min.js
 //= link feather.min.js
