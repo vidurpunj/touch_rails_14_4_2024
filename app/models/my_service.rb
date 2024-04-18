@@ -1,0 +1,2 @@
+class MyService < ApplicationRecord
+end

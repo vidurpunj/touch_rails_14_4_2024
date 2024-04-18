@@ -21,11 +21,8 @@
     <div class="container">
       <!-- Logo container-->
       <a class="logo" href="index.html">
-                    <span class="logo-light-mode">
-                      <%= image_tag 'logo-dark.png', class: 'l-dark', alt: '' %>
-                      <%= image_tag 'logo-light.png', class: 'l-light', alt: '' %>
-                    </span>
-        <%= image_tag  'logo.png', class: 'logo-dark-mode', size: '110x30', alt: ''%>
+        <%= image_tag  'logo.jpg', class: 'logo-dark-mode', size: '50x50', alt: ''%>
+       <span style="color: #3274f0" >TouchRails</span>
       </a>
       <!-- End Logo container-->
       <div class="menu-extras">
@@ -80,7 +77,7 @@
             <div class="row">
               <div class="col-lg-4 col-12">
                 <a href="#" class="logo-footer">
-                  <%= image_tag 'logo-light.png', height: '26', alt: '' %>
+                  <%= image_tag 'logo.jpg', height: '26', alt: '' %>
                 </a>
                 <p class="mt-4">Start working with TouchRails that can provide everything you.</p>
                 <ul class="list-unstyled social-icon foot-social-icon mb-0 mt-4">
@@ -121,19 +118,34 @@
                     <h6 class="footer-head">Company</h6>
                     <ul class="list-unstyled footer-list mt-4">
                       <li>
-                        <a href="page-aboutus.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> About us</a>
-                      </li>
-                      <li><a href="page-services-two.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i>
-                        Services</a></li>
-                      <li><a href="page-team.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Team</a>
-                      </li>
-                      <li><a href="page-pricing.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Pricing</a>
-                      </li>
-                      <li><a href="blog-grid.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Blog</a>
+                        <%= link_to about_index_path, class: "text-foot" do %>
+                          <i class="uil uil-angle-right-b me-1"></i> About us
+                        <% end %>
                       </li>
                       <li>
-                        <a href="portfolio-detail-four.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i>
-                          Project</a></li>
+                        <%= link_to my_services_path, class: 'text-foot' do %>
+                          <i class="uil uil-angle-right-b me-1"></i>Services
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to teams_path, class: 'text-foot' do %>
+                          <i class="uil uil-angle-right-b me-1"></i> Team
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to pricing_index_path, class: 'text-foot' do %>
+                          <i class="uil uil-angle-right-b me-1"></i> Pricing
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to blogs_path, class: 'text-foot' do %>
+                          <i class="uil uil-angle-right-b me-1"></i> Blog
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to projects_path, class: 'text-foot' do %>
+                          <i class="uil uil-angle-right-b me-1"></i> Projects
+                        <% end %>
                     </ul>
                   </div><!--end col-->
 
@@ -144,12 +156,10 @@
                         Services</a></li>
                       <li><a href="index.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Privacy Policy</a>
                       </li>
-                      <li><a href="page-contact.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Contact
-                        Us</a></li>
-                      <li><a href="index.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Changelog</a>
-                      </li>
                       <li>
-                        <a href="components.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Components</a>
+                        <%= link_to contacts_path, class: 'text-foot' do %>
+                          <i class="uil uil-angle-right-b me-1"></i> Contact Us
+                        <% end %>
                       </li>
                     </ul>
                   </div><!--end col-->
@@ -158,16 +168,11 @@
                     <h6 class="footer-head">Resources</h6>
                     <ul class="list-unstyled footer-list mt-4">
                       <li>
-                        <a href="page-faqs.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Theme guide</a>
+                        <a href="page-faqs.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> FAQ </a>
                       </li>
                       <li>
                         <a href="page-faqs.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Support desk</a>
                       </li>
-                      <li>
-                        <a href="page-services.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> What we
-                          offer</a></li>
-                      <li><a href="page-aboutus.html" class="text-foot"><i class="uil uil-angle-right-b me-1"></i> Company
-                        history</a></li>
                     </ul>
                   </div><!--end col-->
                 </div>

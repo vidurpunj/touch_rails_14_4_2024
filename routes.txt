@@ -23,6 +23,38 @@
                                          PATCH  /services/:id(.:format)                                                                           services#update
                                          PUT    /services/:id(.:format)                                                                           services#update
                                          DELETE /services/:id(.:format)                                                                           services#destroy
+                         portfolio_index GET    /portfolio(.:format)                                                                              portfolio#index
+                                         POST   /portfolio(.:format)                                                                              portfolio#create
+                           new_portfolio GET    /portfolio/new(.:format)                                                                          portfolio#new
+                          edit_portfolio GET    /portfolio/:id/edit(.:format)                                                                     portfolio#edit
+                               portfolio GET    /portfolio/:id(.:format)                                                                          portfolio#show
+                                         PATCH  /portfolio/:id(.:format)                                                                          portfolio#update
+                                         PUT    /portfolio/:id(.:format)                                                                          portfolio#update
+                                         DELETE /portfolio/:id(.:format)                                                                          portfolio#destroy
+                                   blogs GET    /blogs(.:format)                                                                                  blogs#index
+                                         POST   /blogs(.:format)                                                                                  blogs#create
+                                new_blog GET    /blogs/new(.:format)                                                                              blogs#new
+                               edit_blog GET    /blogs/:id/edit(.:format)                                                                         blogs#edit
+                                    blog GET    /blogs/:id(.:format)                                                                              blogs#show
+                                         PATCH  /blogs/:id(.:format)                                                                              blogs#update
+                                         PUT    /blogs/:id(.:format)                                                                              blogs#update
+                                         DELETE /blogs/:id(.:format)                                                                              blogs#destroy
+                                   teams GET    /teams(.:format)                                                                                  teams#index
+                                         POST   /teams(.:format)                                                                                  teams#create
+                                new_team GET    /teams/new(.:format)                                                                              teams#new
+                               edit_team GET    /teams/:id/edit(.:format)                                                                         teams#edit
+                                    team GET    /teams/:id(.:format)                                                                              teams#show
+                                         PATCH  /teams/:id(.:format)                                                                              teams#update
+                                         PUT    /teams/:id(.:format)                                                                              teams#update
+                                         DELETE /teams/:id(.:format)                                                                              teams#destroy
+                             my_services GET    /my_services(.:format)                                                                            my_services#index
+                                         POST   /my_services(.:format)                                                                            my_services#create
+                          new_my_service GET    /my_services/new(.:format)                                                                        my_services#new
+                         edit_my_service GET    /my_services/:id/edit(.:format)                                                                   my_services#edit
+                              my_service GET    /my_services/:id(.:format)                                                                        my_services#show
+                                         PATCH  /my_services/:id(.:format)                                                                        my_services#update
+                                         PUT    /my_services/:id(.:format)                                                                        my_services#update
+                                         DELETE /my_services/:id(.:format)                                                                        my_services#destroy
                                     root GET    /                                                                                                 home#index
                       rails_health_check GET    /up(.:format)                                                                                     rails/health#show
            rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create
