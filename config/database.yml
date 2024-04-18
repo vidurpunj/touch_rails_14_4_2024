@@ -21,6 +21,6 @@ test:
 
 production:
   <<: *default
-  database: touch_rails_14_4_2024_production
-  username: touch_rails_14_4_2024
-  password: <%= ENV["TOUCH_RAILS_14_4_2024_DATABASE_PASSWORD"] %>
+  database: touch_rails_14_4_2024_development
+  username: postgres
+  password: postgres

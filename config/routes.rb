@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'projects/index'
   resources 'contacts'
   resources 'about'
   resources 'services'
@@ -8,6 +7,10 @@ Rails.application.routes.draw do
   resources 'teams'
   resources 'my_services'
   resources 'pricing'
+  resources 'projects'
+  resources 'terms_of_use'
+  resources 'privacy_policy'
+  resources 'faq'
   resources 'projects'
   root to: 'home#index'
   get "up" => "rails/health#show", as: :rails_health_check
