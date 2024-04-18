@@ -3,7 +3,7 @@
   <head>
     <title>TouchRails</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="images/favicon.ico" rel="shortcut icon">
+    <%= favicon_link_tag 'favicon.ico', rel: 'shortcut icon' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -25,7 +25,7 @@
                       <%= image_tag 'logo-dark.png', class: 'l-dark', alt: '' %>
                       <%= image_tag 'logo-light.png', class: 'l-light', alt: '' %>
                     </span>
-        <%= image_tag  'logo-light.png', class: 'logo-dark-mode', alt: ''%>
+        <%= image_tag  'logo.png', class: 'logo-dark-mode', size: '110x30', alt: ''%>
       </a>
       <!-- End Logo container-->
       <div class="menu-extras">
@@ -82,7 +82,7 @@
                 <a href="#" class="logo-footer">
                   <%= image_tag 'logo-light.png', height: '26', alt: '' %>
                 </a>
-                <p class="mt-4">Start working with Starty that can provide everything you.</p>
+                <p class="mt-4">Start working with TouchRails that can provide everything you.</p>
                 <ul class="list-unstyled social-icon foot-social-icon mb-0 mt-4">
                   <li class="list-inline-item">
                     <a href="https://1.envato.market/starty" target="_blank" class="rounded"><i class="uil uil-shopping-cart align-middle" title="Buy Now"></i></a>
@@ -185,8 +185,8 @@
             <div class="text-center">
               <p class="mb-0 text-muted text-bg-light">
                 <script>document.write(new Date().getFullYear())</script>
-                © Starty. Design with <i class="mdi mdi-heart text-danger"></i> by
-                <a href="https://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.
+                © TouchRails Powered by <i class="mdi mdi-heart text-danger"></i> by
+                <a href="https://www.viptechnologies.in/" target="_blank" class="text-reset">viptechnologies India</a>.
               </p>
             </div>
           </div><!--end col-->
