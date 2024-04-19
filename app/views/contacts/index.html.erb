@@ -79,6 +79,9 @@
         </div>
         <div class="custom-form">
           <%= form_with(model: @get_in_touch, url: contacts_path, local: true) do |f| %>
+            <% flash.each do |type, msg| %>
+              <div class="alert alert-info"><%= msg %></div>
+            <% end %>
             <p id="error-msg" class="mb-0"></p>
             <div id="simple-msg"></div>
             <div class="row">
