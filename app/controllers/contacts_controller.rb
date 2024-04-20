@@ -6,7 +6,7 @@ class ContactsController < ApplicationController
   def create
     @gate_in_touch = GetInTouch.new(get_in_touch_params)
     if @gate_in_touch.save
-      flash[:message] = "you request saved we will get back to you."
+      flash[:notice] = "you request saved we will get back to you."
     else
       flash[:alert] = "your request not saved."
     end
