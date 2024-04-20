@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/9f12f7e901ffd.js"
+            data-cmp-host="c.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="0">
+    </script>
+    <script async custom-element="amp-consent" src="https://cdn.ampproject.org/v0/amp-consent-0.1.js"></script><meta name="amp-consent-blocking" content="amp-ad">
     <title>TouchRails</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= favicon_link_tag 'favicon.ico', rel: 'shortcut icon' %>
@@ -13,7 +17,19 @@
     <%= stylesheet_link_tag "css/tobii.min.css", media: "all", integrity: true, crossorigin: "anonymous" %>
     <%= stylesheet_link_tag "css/materialdesignicons.min.css", media: "all", integrity: true, crossorigin: "anonymous" %>
     <link href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" rel="stylesheet" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FS4Y6BKBJ6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-FS4Y6BKBJ6');
+    </script>
   </head>
 
   <body>
@@ -195,6 +211,20 @@
         </div><!--end row-->
       </div><!--end container-->
     </div>
+    <amp-consent id="ConsentManager" layout="nodisplay" type="ConsentManager">
+      <script type="application/json">
+    {
+      "postPromptUI": "postPromptUI",
+      "clientConfig": {
+        "cdid": "9f12f7e901ffd",
+        "params": ""
+      }
+    }
+  </script>
+      <div id="postPromptUI">
+        <button on="tap:ConsentManager.prompt()" role="button">Manage privacy settings</button>
+      </div>
+    </amp-consent>
   </footer><!--end footer-->
   <!-- End -->
   <a href="javascript:void(0)" onclick="topFunction()" id="back-to-top" class="back-to-top rounded-pill"><i class="mdi mdi-arrow-up"></i></a>
