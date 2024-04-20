@@ -1,0 +1,38 @@
+<!-- Hero Start -->
+<section class="bg-half-170 d-table w-100" style="background: url('<%= asset_path 'bg/blog01.jpg' %>') center;">
+  <div class="bg-overlay bg-gradient-overlay"></div>
+  <div class="container">
+    <div class="row mt-5 justify-content-center">
+      <div class="col-12">
+        <div class="title-heading text-center">
+          <h5 class="heading fw-semibold page-heading text-white title-dark">Blog & News</h5>
+          <p class="text-white-50 para-desc mx-auto mb-0">Our Latest Blog and News in List Layouts</p>
+        </div>
+      </div><!--end col-->
+    </div><!--end row-->
+  </div><!--end container-->
+</section><!--end section-->
+<div class="container mt-5">
+  <%= form_with(model: @blog, url: blogs_path, local: true) do |f| %>
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-<%= type == 'notice' ? 'success' : 'error' %>"><%= msg %></div>
+    <% end %>
+    <div class="row">
+      <div class="col">
+        <%= f.label :title, for: 'title', class: 'form-field' %>
+        <%= f.text_field :title, class: 'form-control', required: true %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.label :body, for: 'title', class: 'form-field' %>
+        <%= f.text_area :body, class: 'form-control', required: true, rows: '10' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.submit 'create blog', class: 'form-control btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+</div>
