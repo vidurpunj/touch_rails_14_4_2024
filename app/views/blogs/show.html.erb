@@ -1,17 +1,89 @@
-<script src="https://cdn.jsdelivr.net/npm/quill@2.0.0/dist/quill.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/quill@2.0.0/dist/quill.snow.css" rel="stylesheet">
+<section class="bg-half-170 d-table w-100" style="background: url('<%= asset_path 'bg/blog01.jpg' %>') center;">
+  <div class="bg-overlay bg-gradient-overlay"></div>
+  <div class="container">
+    <div class="row mt-5 justify-content-center">
+      <div class="col-12">
+        <div class="title-heading text-center">
+          <h5 class="heading fw-semibold page-heading text-white title-dark">Blog & News</h5>
+          <p class="text-white-50 para-desc mx-auto mb-0">Our Latest Blog and News in List Layouts</p>
+        </div>
+      </div><!--end col-->
+    </div><!--end row-->
+  </div><!--end container-->
+</section><!--end section-->
+<div class="container mt-5">
 
-<div id="editor">
-  <h2>Demo Content</h2>
-  <p>Preset build with <code>snow</code> theme, and some common formats.</p>
+  <%= form_tag '#', id: "myForm" do %>
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-<%= type == 'notice' ? 'success' : 'error' %>"><%= msg %></div>
+    <% end %>
+    <div class="row">
+      <div class="col">
+        <%= label_tag 'title', 'Title', class: 'form-field' %>
+        <%= text_field_tag 'title', '', class: 'form-control text-dark', value: @blog.title, required: true %>
+        <%= hidden_field_tag 'id', '', value: @blog.id %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <%= label_tag 'body', 'Body', class: 'form-field' %>
+        <%#= f.text_area :body, class: 'form-control text-black', required: true, rows: '10' %>
+        <div id="blog_body">
+          <h2>Demo Content</h2>
+          <p>Preset build with <code>snow</code> theme, and some common formats.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= submit_tag 'create blog', class: 'form-control btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
 </div>
-
 <script>
-    window.onload = function() {
-        // Your JavaScript code here
+    let quill = '';
+    window.onload = function () {
         console.log('Page fully loaded!');
-        const quill = new Quill('#editor', {
+        quill = new Quill('#blog_body', {
             theme: 'snow'
         });
     };
+
+    document.getElementById('myForm').addEventListener('submit', function (event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+
+        // Your custom logic here (e.g., validation, AJAX request)
+        console.log('Form submission prevented!');
+
+        console.log('called the function');
+        const data = {
+            id: document.getElementById('id').value,
+            title: document.getElementById('title').value,
+            // body: quill.getContents()
+            body: quill.root.innerHTML
+        };
+        // Make an AJAX request to your controller action
+        fetch(`/blogs/${document.getElementById('id').value}`, {
+            method: 'PATCH', // or It will got to blogs create
+            body: JSON.stringify(data),
+
+            // Add any necessary headers or data
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer your-token', // Add any other headers you need
+                'X-CSRF-Token': document.head.querySelector('[name=csrf-token]').content, // Include the CSRF token
+            }
+        })
+          .then(response => response.json())
+          .then(data => {
+              // Handle the response data (if needed)
+              console.log(data);
+          })
+          .catch(error => {
+              console.error('Error:', error);
+          });
+    });
 </script>
