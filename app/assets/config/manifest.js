@@ -11,3 +11,4 @@
 //= link feather.min.js
 //= link plugins.init.js
 //= link app.js
+//= link quill.js

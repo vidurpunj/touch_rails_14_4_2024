@@ -1,4 +1,12 @@
 <!-- Hero Start -->
+<style>
+    #blog_body {
+        height: 800px;
+        border-style: solid;
+        border-width: 2px;
+        margin-bottom: 10px; //fix bug here
+    }
+</style>
 <section class="bg-half-170 d-table w-100" style="background: url('<%= asset_path 'bg/blog01.jpg' %>') center;">
   <div class="bg-overlay bg-gradient-overlay"></div>
   <div class="container">
@@ -20,13 +28,18 @@
     <div class="row">
       <div class="col">
         <%= f.label :title, for: 'title', class: 'form-field' %>
-        <%= f.text_field :title, class: 'form-control', required: true %>
+        <%= f.text_field :title, class: 'form-control text-dark', required: true %>
       </div>
     </div>
+    
     <div class="row">
       <div class="col">
         <%= f.label :body, for: 'title', class: 'form-field' %>
-        <%= f.text_area :body, class: 'form-control', required: true, rows: '10' %>
+        <%#= f.text_area :body, class: 'form-control text-black', required: true, rows: '10' %>
+        <div id="blog_body">
+          <h2>Demo Content</h2>
+          <p>Preset build with <code>snow</code> theme, and some common formats.</p>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -36,3 +49,11 @@
     </div>
   <% end %>
 </div>
+<script>
+    window.onload = function() {
+        console.log('Page fully loaded!');
+        const quill = new Quill('#blog_body', {
+            theme: 'snow'
+        });
+    };
+</script>

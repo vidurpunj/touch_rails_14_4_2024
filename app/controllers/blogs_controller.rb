@@ -10,6 +10,7 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
+    byebug
     if @blog.save
       flash[:notice] = "Blog saved."
     else
