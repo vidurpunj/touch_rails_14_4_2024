@@ -1,7 +1,8 @@
 class BlogsController < ApplicationController
 
   def index
-
+    # @blogs = Blog.all
+      @blog1 = Blog.find(25)
   end
 
   def new
@@ -14,10 +15,11 @@ class BlogsController < ApplicationController
     @blog.body = params[:body]
     if @blog.save
       flash[:notice] = "Blog saved."
+      render json: { message: flash[:notice], code: 200}
     else
       flash[:alert] = "Blog not saved."
+      render json: { errors: @record.errors.full_messages }, status: :unprocessable_entity
     end
-    render json: { message: flash[:notice], code: 200}
   end
 
   def show
