@@ -28,6 +28,7 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
   end
   def update
+    byebug
     @blog = Blog.find(params[:id])
     @blog.title = params[:title]
     @blog.body = params[:body]

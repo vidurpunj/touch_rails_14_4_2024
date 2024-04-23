@@ -39,14 +39,13 @@
       <div class="col">
         <%= label_tag 'body', 'Body', class: 'form-field' %>
         <div id="blog_body">
-          <h2>Demo Content</h2>
-          <p>Preset build with <code>snow</code> theme, and some common formats.</p>
+          <%= raw @blog.body %>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <%= submit_tag 'create blog', class: 'form-control btn btn-primary' %>
+        <%= submit_tag 'Update blog', class: 'form-control btn btn-primary' %>
       </div>
     </div>
   <% end %>
@@ -98,8 +97,8 @@
         // Make an AJAX request to your controller action
         fetch(`/blogs/${document.getElementById('id').value}`, {
             method: 'PATCH', // or It will got to blogs create
-            // body: JSON.stringify(data),
-            body: data,
+            body: JSON.stringify(data),
+            // body: data,
 
             // Add any necessary headers or data
             headers: {

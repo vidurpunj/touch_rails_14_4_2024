@@ -39,14 +39,6 @@
 
   <div class="row">
     <div class="col">
-      <div id="blog_body">
-        <%= raw @blog.body %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
       <%= link_to 'Edit', edit_blog_path(@blog), class: 'form-control btn btn-primary' %>
     </div>
   </div>
@@ -57,19 +49,7 @@
         console.log('Page fully loaded!');
         quill = new Quill('#blog_body', {
             modules: {
-                toolbar: [
-                    ['bold', 'italic', 'underline'],        // toggled buttons
-                    [{ 'header': 1 }, { 'header': 2 }],      // custom button values
-                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                    [{ 'indent': '-1'}, { 'indent': '+1' }], // outdent/indent
-                    [{ 'direction': 'rtl' }],                 // text direction
-                    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-                    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-                    [{ 'font': [] }],
-                    [{ 'align': [] }],
-                    ['link', 'image', 'video', 'code-block']
-                ]
+                toolbar: 'disable'
             },
             syntax: true,  // Enable syntax highlighting
             placeholder: 'Compose an epic...',

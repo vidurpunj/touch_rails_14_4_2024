@@ -44,3 +44,4 @@ end
 
 gem 'byebug'
 gem 'sitemap_generator'
+gem 'ckeditor'
