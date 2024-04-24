@@ -30,16 +30,16 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
   end
   def update
-    byebug
     @blog = Blog.find(params[:id])
     @blog.title = params[:title]
     @blog.body = params[:body]
     if @blog.save
       flash[:notice] = "Blog saved."
+      render json: { message: flash[:notice], code: 200}
     else
       flash[:alert] = "Blog not saved."
+      render json: { errors: @record.errors.full_messages }, status: :unprocessable_entity
     end
-    render json: { message: flash[:notice], code: 200}
   end
   
   private
