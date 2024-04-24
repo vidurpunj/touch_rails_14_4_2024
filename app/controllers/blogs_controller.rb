@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-
+  before_action :authenticate_user!, only: %i[new create edit update]
   def index
     # @blogs = Blog.all
       @blog1 = Blog.find(25)

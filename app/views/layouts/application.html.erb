@@ -105,6 +105,13 @@
           <li>
             <%= link_to 'Contact Us', contacts_path, class: 'sub-menu-item' %>
           </li>
+          <li>
+            <% if user_signed_in? %>
+              <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'sub-menu-item' %>
+            <% else %>
+              <%= link_to 'Login', new_user_session_path, class: 'sub-menu-item' %>
+            <% end %>
+          </li>
         </ul><!--end navigation menu-->
       </div><!--end navigation-->
     </div><!--end container-->
