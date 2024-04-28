@@ -1,12 +1,29 @@
+<style>
+    .accordion-item {
+        background-color: #f8f9fa; /* Set the default background color for closed accordion items */
+    }
+    .accordion-button {
+        background-color: #f8f9fa; /* Set the background color for the accordion button */
+    }
+    .accordion-button:not(.collapsed) {
+        background-color: #e9ecef; /* Set the background color for the accordion button when expanded */
+    }
+    .accordion-button.collapsed {
+        background-color: #f8f9fa !important; /* Set the background color for the accordion button when collapsed */
+    }
+    .btn-background-accordion{
+        background-color: #f8f9fa !important;
+    }
+</style>
 <!-- Hero Start -->
-<section class="bg-half-170 d-table w-100" style="background: url('<%= asset_path 'bg/about.jpg' %>') center;">
+<section class="bg-half-80 d-table bg-primary bg-gradient w-100">
   <div class="bg-overlay bg-gradient-overlay"></div>
   <div class="container">
     <div class="row mt-5 justify-content-center">
       <div class="col-12">
         <div class="title-heading text-center">
-<!--          <small class="text-white-50 mb-1 fw-medium text-uppercase mx-auto">Get in touch</small>-->
-          <h5 class="heading fw-semibold mb-0 page-heading text-white title-dark">Frequently Asked Questions</h5>
+          <small class="text-white-50 mb-1 fw-medium text-uppercase mx-auto">Questions & Answers</small>
+          <h5 class="heading fw-semibold mb-0 page-heading text-white title-dark">FAQs</h5>
         </div>
       </div><!--end col-->
     </div><!--end row-->
@@ -14,113 +31,32 @@
     <div class="position-middle-bottom">
       <nav aria-label="breadcrumb" class="d-block">
         <ul class="breadcrumb breadcrumb-muted mb-0 p-0">
-          <li class="breadcrumb-item"><a href="index.html">Starty</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+          <li class="breadcrumb-item"><a href="index.html">TouchRails</a></li>
+          <li class="breadcrumb-item active" aria-current="page">FAQs</li>
         </ul>
       </nav>
     </div>
   </div><!--end container-->
 </section><!--end section-->
 <!-- Hero End -->
+
 <section class="section">
-  <div class="container mt-5">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="faqItem1">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
-          Question #1: How does TouchRails ensure security?
-        </button>
-      </h2>
-      <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-        <div class="accordion-body">
-          Answer: We work with top payment companies to guarantee safety and security. All billing information is stored
-          securely.
+  <div class="accordion mt-4 pt-2">
+    <div class="container mt-5">
+      <% @faq.each_with_index do |faq, index| %>
+        <div class="accordion-item mt-5 accordion-item rounded border-0 shadow">
+          <h2 class="accordion-header" id="faqItem<%= index + 1 %>">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index + 1 %>">
+              <b class="text-dark">Question #<%= index + 1 %>: <%= faq.query %></b>
+            </button>
+          </h2>
+          <div id="collapse<%= index + 1 %>" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Answer: <%= faq.answer.html_safe %>.
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="container mt-5">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="faqItem1">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
-          Question #2: Is my payment information secure?
-        </button>
-      </h2>
-      <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-        <div class="accordion-body">
-          Answer:Absolutely! We work with top payment companies, ensuring your safety and security. All billing information is stored securely by our payment processing partner.
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container mt-5">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="faqItem1">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
-          Question #3: Can I cancel my subscription?
-        </button>
-      </h2>
-      <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-        <div class="accordion-body">
-          Answer: Yes, you can cancel your subscription anytime in your account. Once canceled, you won’t be charged next month.
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container mt-5">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="faqItem1">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
-          Question #4: Do you offer yearly subscriptions?
-        </button>
-      </h2>
-      <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-        <div class="accordion-body">
-          Answer: Currently, we only offer monthly subscriptions. You can upgrade or cancel your monthly account at any time with no further obligation.
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container mt-5">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="faqItem1">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
-          Question #5: How do I update my payment information?
-        </button>
-      </h2>
-      <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-        <div class="accordion-body">
-          Answer: Go to the billing section of your dashboard and update your payment details.
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container mt-5">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="faqItem1">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
-          Question #6: Is there a free plan available?
-        </button>
-      </h2>
-      <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-        <div class="accordion-body">
-          Answer: Of course! We offer a free plan for anyone who wants to try our service.
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container mt-5">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="faqItem1">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
-          Question #7: where to contact if anything not working ?
-        </button>
-      </h2>
-      <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-        <div class="accordion-body">
-          Answer: you can directly call on +91-9541555660 or can leave a query on
-          <a href="https://www.touchrails.com/contacts" target="_blank">contact us</a> page we will get in touch with you in 24 business hours.
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </section>
