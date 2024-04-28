@@ -1,4 +1,19 @@
                                   Prefix Verb   URI Pattern                                                                                       Controller#Action
+                        new_user_session GET    /users/sign_in(.:format)                                                                          users/sessions#new
+                            user_session POST   /users/sign_in(.:format)                                                                          users/sessions#create
+                    destroy_user_session GET    /users/sign_out(.:format)                                                                         users/sessions#destroy
+                       new_user_password GET    /users/password/new(.:format)                                                                     devise/passwords#new
+                      edit_user_password GET    /users/password/edit(.:format)                                                                    devise/passwords#edit
+                           user_password PATCH  /users/password(.:format)                                                                         devise/passwords#update
+                                         PUT    /users/password(.:format)                                                                         devise/passwords#update
+                                         POST   /users/password(.:format)                                                                         devise/passwords#create
+                cancel_user_registration GET    /users/cancel(.:format)                                                                           devise/registrations#cancel
+                   new_user_registration GET    /users/sign_up(.:format)                                                                          devise/registrations#new
+                  edit_user_registration GET    /users/edit(.:format)                                                                             devise/registrations#edit
+                       user_registration PATCH  /users(.:format)                                                                                  devise/registrations#update
+                                         PUT    /users(.:format)                                                                                  devise/registrations#update
+                                         DELETE /users(.:format)                                                                                  devise/registrations#destroy
+                                         POST   /users(.:format)                                                                                  devise/registrations#create
                                 contacts GET    /contacts(.:format)                                                                               contacts#index
                                          POST   /contacts(.:format)                                                                               contacts#create
                              new_contact GET    /contacts/new(.:format)                                                                           contacts#new
@@ -55,6 +70,54 @@
                                          PATCH  /my_services/:id(.:format)                                                                        my_services#update
                                          PUT    /my_services/:id(.:format)                                                                        my_services#update
                                          DELETE /my_services/:id(.:format)                                                                        my_services#destroy
+                           pricing_index GET    /pricing(.:format)                                                                                pricing#index
+                                         POST   /pricing(.:format)                                                                                pricing#create
+                             new_pricing GET    /pricing/new(.:format)                                                                            pricing#new
+                            edit_pricing GET    /pricing/:id/edit(.:format)                                                                       pricing#edit
+                                 pricing GET    /pricing/:id(.:format)                                                                            pricing#show
+                                         PATCH  /pricing/:id(.:format)                                                                            pricing#update
+                                         PUT    /pricing/:id(.:format)                                                                            pricing#update
+                                         DELETE /pricing/:id(.:format)                                                                            pricing#destroy
+                                projects GET    /projects(.:format)                                                                               projects#index
+                                         POST   /projects(.:format)                                                                               projects#create
+                             new_project GET    /projects/new(.:format)                                                                           projects#new
+                            edit_project GET    /projects/:id/edit(.:format)                                                                      projects#edit
+                                 project GET    /projects/:id(.:format)                                                                           projects#show
+                                         PATCH  /projects/:id(.:format)                                                                           projects#update
+                                         PUT    /projects/:id(.:format)                                                                           projects#update
+                                         DELETE /projects/:id(.:format)                                                                           projects#destroy
+                      terms_of_use_index GET    /terms_of_use(.:format)                                                                           terms_of_use#index
+                                         POST   /terms_of_use(.:format)                                                                           terms_of_use#create
+                        new_terms_of_use GET    /terms_of_use/new(.:format)                                                                       terms_of_use#new
+                       edit_terms_of_use GET    /terms_of_use/:id/edit(.:format)                                                                  terms_of_use#edit
+                            terms_of_use GET    /terms_of_use/:id(.:format)                                                                       terms_of_use#show
+                                         PATCH  /terms_of_use/:id(.:format)                                                                       terms_of_use#update
+                                         PUT    /terms_of_use/:id(.:format)                                                                       terms_of_use#update
+                                         DELETE /terms_of_use/:id(.:format)                                                                       terms_of_use#destroy
+                    privacy_policy_index GET    /privacy_policy(.:format)                                                                         privacy_policy#index
+                                         POST   /privacy_policy(.:format)                                                                         privacy_policy#create
+                      new_privacy_policy GET    /privacy_policy/new(.:format)                                                                     privacy_policy#new
+                     edit_privacy_policy GET    /privacy_policy/:id/edit(.:format)                                                                privacy_policy#edit
+                          privacy_policy GET    /privacy_policy/:id(.:format)                                                                     privacy_policy#show
+                                         PATCH  /privacy_policy/:id(.:format)                                                                     privacy_policy#update
+                                         PUT    /privacy_policy/:id(.:format)                                                                     privacy_policy#update
+                                         DELETE /privacy_policy/:id(.:format)                                                                     privacy_policy#destroy
+                               faq_index GET    /faq(.:format)                                                                                    faq#index
+                                         POST   /faq(.:format)                                                                                    faq#create
+                                 new_faq GET    /faq/new(.:format)                                                                                faq#new
+                                edit_faq GET    /faq/:id/edit(.:format)                                                                           faq#edit
+                                     faq GET    /faq/:id(.:format)                                                                                faq#show
+                                         PATCH  /faq/:id(.:format)                                                                                faq#update
+                                         PUT    /faq/:id(.:format)                                                                                faq#update
+                                         DELETE /faq/:id(.:format)                                                                                faq#destroy
+                                         GET    /projects(.:format)                                                                               projects#index
+                                         POST   /projects(.:format)                                                                               projects#create
+                                         GET    /projects/new(.:format)                                                                           projects#new
+                                         GET    /projects/:id/edit(.:format)                                                                      projects#edit
+                                         GET    /projects/:id(.:format)                                                                           projects#show
+                                         PATCH  /projects/:id(.:format)                                                                           projects#update
+                                         PUT    /projects/:id(.:format)                                                                           projects#update
+                                         DELETE /projects/:id(.:format)                                                                           projects#destroy
                                     root GET    /                                                                                                 home#index
                       rails_health_check GET    /up(.:format)                                                                                     rails/health#show
            rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create
