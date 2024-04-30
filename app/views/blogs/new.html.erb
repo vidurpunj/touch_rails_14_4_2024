@@ -22,6 +22,8 @@
   </div><!--end container-->
 </section><!--end section-->
 <div class="container mt-5">
+  <div id="result" style="background-color: greenyellow">
+  </div>
   <%#= form_with(model: @blog, url: blogs_path, local: true) do |f| %>
   <%= form_tag '#', id: "myForm" do %>
     <% flash.each do |type, msg| %>
@@ -38,8 +40,8 @@
       <div class="col">
         <%= label_tag 'body', 'Body', class: 'form-field' %>
         <%#= f.text_area :body, id: "blog_body"  %>
-<!--        <%#= form.text_area :content, id: "quill-editor" %><-->
-       <div id="blog_body">
+        <!--        <%#= form.text_area :content, id: "quill-editor" %><-->
+        <div id="blog_body">
           <h2>Demo Content</h2>
           <p>Preset build with <code>snow</code> theme, and some common formats.</p>
         </div>
@@ -60,14 +62,14 @@
             modules: {
                 toolbar: [
                     ['bold', 'italic', 'underline'],        // toggled buttons
-                    [{ 'header': 1 }, { 'header': 2 }],      // custom button values
-                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                    [{ 'indent': '-1'}, { 'indent': '+1' }], // outdent/indent
-                    [{ 'direction': 'rtl' }],                 // text direction
-                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-                    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-                    [{ 'font': [] }],
-                    [{ 'align': [] }],
+                    [{'header': 1}, {'header': 2}],      // custom button values
+                    [{'list': 'ordered'}, {'list': 'bullet'}],
+                    [{'indent': '-1'}, {'indent': '+1'}], // outdent/indent
+                    [{'direction': 'rtl'}],                 // text direction
+                    [{'header': [1, 2, 3, 4, 5, 6, false]}],
+                    [{'color': []}, {'background': []}],          // dropdown with defaults from theme
+                    [{'font': []}],
+                    [{'align': []}],
                     ['link', 'image', 'video', 'code-block']
                 ]
             },
@@ -86,10 +88,6 @@
         // Prevent the default form submission behavior
         event.preventDefault();
 
-        // Your custom logic here (e.g., validation, AJAX request)
-        console.log('Form submission prevented!');
-
-        console.log('called the function');
         const data = {
             title: document.getElementById('title').value,
             // body: quill.getContents()
@@ -110,7 +108,17 @@
             .then(response => response.json())
             .then(data => {
                 // Handle the response data (if needed)
-                console.log(data);
+                let result = document.getElementById("result")
+                result.html = data.message;
+                result.style.display = 'block';
+                // as jaascript not workingso showing alert
+                alert(data.message);
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth" // Optional: Add smooth scrolling behavior
+                });
+                window.scrollTo(0, 0);
+
             })
             .catch(error => {
                 console.error('Error:', error);
