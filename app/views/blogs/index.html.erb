@@ -23,7 +23,7 @@
           <div class="row align-items-center g-0">
             <div class="col-md-6">
               <div class="image card-img position-relative overflow-hidden">
-                <%= image_tag 'blog/01.jpg', class: 'img-fluid', alt: '' %>
+                <%= image_tag 'blog/RailsTouch.jpg', class: 'img-fluid', alt: '' %>
                 <div class="card-overlay"></div>
                 <div class="blog-tag">
                   <a href="javascript:void(0)" class="badge text-bg-light">Corporate</a>
@@ -33,7 +33,9 @@
 
             <div class="col-md-6">
               <div class="card-body content">
-                <a href="blog-detail-two.html" class="h5 title text-dark d-block mb-0"><%= @blog1.title %></a>
+                <%= link_to blog_path(@blog1), class: "h5 title text-dark d-block mb-0" do  %>
+                  <%= @blog1.title %>
+                <% end %>
                 <p class="text-muted mt-2 mb-2"><%= @blog1.body.first(300).html_safe %>.</p>
                 <%= link_to blog_path(@blog1) do  %>
                   Read More <i class="uil uil-arrow-right align-middle"></i>
