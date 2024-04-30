@@ -1,5 +1,4 @@
 //= link_tree ../images
-//= link_tree ../blog_images
 //= link_directory ../stylesheets
 //= link_tree ../stylesheets/css
 //= link_tree ../stylesheets/fonts

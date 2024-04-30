@@ -3,6 +3,7 @@ class BlogsController < ApplicationController
   def index
     # @blogs = Blog.all
       @blog1 = Blog.find(25)
+      @blog2 = Blog.find(36)
   end
 
   def new

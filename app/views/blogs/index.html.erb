@@ -51,7 +51,7 @@
           <div class="row align-items-center g-0">
             <div class="col-md-6">
               <div class="image card-img position-relative overflow-hidden">
-                <%= image_tag 'blog/02.jpg', class: 'img-fluid', alt: '' %>
+                <%= image_tag 'blog/RailsWebDeelopment.jpg', class: 'img-fluid', alt: '' %>
                 <div class="card-overlay"></div>
                 <div class="blog-tag">
                   <a href="javascript:void(0)" class="badge text-bg-light">Branding</a>
@@ -61,9 +61,13 @@
 
             <div class="col-md-6">
               <div class="card-body content">
-                <a href="blog-detail-two.html" class="h5 title text-dark d-block mb-0">The Dark Side of Overnight Success</a>
-                <p class="text-muted mt-2 mb-2">The most well-known dummy text, in the 16th century.</p>
-                <a href="blog-detail-two.html" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
+                <%= link_to blog_path(@blog2), class: "h5 title text-dark d-block mb-0" do  %>
+                  <%= @blog2.title %>
+                <% end %>
+                <p class="text-muted mt-2 mb-2"><%= @blog2.body.first(120).html_safe %></p>
+                <%= link_to blog_path(@blog2) do  %>
+                  Read More <i class="uil uil-arrow-right align-middle"></i>
+                <% end %>
               </div>
             </div>
           </div>
