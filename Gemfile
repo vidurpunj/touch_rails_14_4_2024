@@ -45,3 +45,4 @@ end
 gem 'byebug'
 gem 'sitemap_generator'
 gem 'devise'
+gem 'carrierwave', '~> 3.0'

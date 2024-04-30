@@ -14,6 +14,7 @@ class BlogsController < ApplicationController
     @blog = Blog.new
     @blog.title = params[:title]
     @blog.body = params[:body]
+    @blog.blog_image = params[:blog_image]
     if @blog.save
       flash.now[:notice] = "Blog saved."
       render json: { message: flash[:notice], code: 200}
@@ -34,8 +35,9 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     @blog.title = params[:title]
     @blog.body = params[:body]
+    @blog.blog_image = params[:blog_image]
     if @blog.save
-      flash[:notice] = "Blog saved."
+      flash[:notice] = "Blog Updated."
       render json: { message: flash[:notice], code: 200}
     else
       flash[:alert] = "Blog not saved."
@@ -46,6 +48,6 @@ class BlogsController < ApplicationController
   private
 
   def blog_params
-    params.require(:blog).permit(:title, :body)
+    params.require(:blog).permit(:title, :body, :blog_image)
   end
 end

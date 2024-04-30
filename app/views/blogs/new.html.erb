@@ -24,8 +24,7 @@
 <div class="container mt-5">
   <div id="result" style="background-color: greenyellow">
   </div>
-  <%#= form_with(model: @blog, url: blogs_path, local: true) do |f| %>
-  <%= form_tag '#', id: "myForm" do %>
+  <%= form_tag '#', id: "myForm", enctype: "multipart/form-data" do %>
     <% flash.each do |type, msg| %>
       <div class="alert alert-<%= type == 'notice' ? 'success' : 'error' %>"><%= msg %></div>
     <% end %>
@@ -35,7 +34,12 @@
         <%= text_field_tag 'title', '', class: 'form-control text-dark', required: true %>
       </div>
     </div>
-
+    <div class="row">
+      <div class="col">
+        <%= label_tag 'Blog Image', '', class: 'form-field' %>
+        <%= file_field_tag 'blog_image', class: 'form-control text-dark', required: true %>
+      </div>
+    </div>
     <div class="row">
       <div class="col">
         <%= label_tag 'body', 'Body', class: 'form-field' %>
@@ -88,42 +92,45 @@
         // Prevent the default form submission behavior
         event.preventDefault();
 
-        const data = {
-            title: document.getElementById('title').value,
-            // body: quill.getContents()
-            body: quill.root.innerHTML
-        };
+        const formData = new FormData();
+        formData.append('title', document.getElementById('title').value);
+        formData.append('body', quill.root.innerHTML);
+
+        // Add the image file to the FormData
+        const imageInput = document.getElementById('blog_image');
+        formData.append('blog_image', imageInput.files[0]);
+
+        // Add CSRF token
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        formData.append('authenticity_token', csrfToken);
+
         // Make an AJAX request to your controller action
         fetch('/blogs', {
-            method: 'POST', // or It will got to blogs create
-            body: JSON.stringify(data),
+            method: 'POST',
+            body: formData,
+            // Don't set Content-Type header manually
 
-            // Add any necessary headers or data
+            // Include any other headers you need
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer your-token', // Add any other headers you need
-                'X-CSRF-Token': document.head.querySelector('[name=csrf-token]').content, // Include the CSRF token
+                'Authorization': 'Bearer your-token',
             }
         })
             .then(response => response.json())
             .then(data => {
-                // Handle the response data (if needed)
-                let result = document.getElementById("result")
-                result.html = data.message;
+                // Handle the response data
+                let result = document.getElementById("result");
+                result.innerHTML = data.message;
                 result.style.display = 'block';
-                // as jaascript not workingso showing alert
-                alert(data.message);
                 window.scrollTo({
                     top: 0,
-                    behavior: "smooth" // Optional: Add smooth scrolling behavior
+                    behavior: "smooth"
                 });
-                window.scrollTo(0, 0);
-
             })
             .catch(error => {
                 console.error('Error:', error);
             });
     });
+
 
 
 </script>
