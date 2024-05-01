@@ -6,7 +6,8 @@
       <div class="col-12">
         <div class="title-heading text-center">
           <h5 class="heading fw-semibold page-heading text-white title-dark">Blog & News</h5>
-          <p class="text-white-50 para-desc mx-auto mb-0">Our Latest Blog and News in List Layouts <%= link_to 'Create', new_blog_path  %></p>
+          <p class="text-white-50 para-desc mx-auto mb-0">Our Latest Blog and News in List
+            Layouts <%= link_to 'Create', new_blog_path %></p>
         </div>
       </div><!--end col-->
     </div><!--end row-->
@@ -18,205 +19,35 @@
 <section class="section">
   <div class="container">
     <div class="row">
-      <div class="col-lg-6 mb-4 pb-2">
-        <div class="card blog blog-primary shadow rounded overflow-hidden">
-          <div class="row align-items-center g-0">
-            <div class="col-md-6">
-              <div class="image card-img position-relative overflow-hidden">
-                <%= image_tag 'blog/RailsTouch.jpg', class: 'img-fluid', alt: '' %>
-                <div class="card-overlay"></div>
-                <div class="blog-tag">
-                  <a href="javascript:void(0)" class="badge text-bg-light">Corporate</a>
+      <% @blogs.each do |blog| %>
+        <div class="col-lg-6 mb-4 pb-2">
+          <div class="card blog blog-primary shadow rounded overflow-hidden">
+            <div class="row align-items-center g-0">
+              <div class="col-md-6">
+                <div class="image card-img position-relative overflow-hidden">
+                  <%= image_tag blog.blog_image_url, size: 200, class: 'img-fluid', alt: '' %>
+                  <div class="card-overlay"></div>
+                  <div class="blog-tag">
+                    <a href="javascript:void(0)" class="badge text-bg-light">Corporate</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="card-body content">
+                  <%= link_to blog_path(blog), class: "h5 title text-dark d-block mb-0" do %>
+                    <%= blog.title %>
+                  <% end %>
+<!--                  <p class="text-muted mt-2 mb-2"><%#= blog.body.first(100).html_safe %>.</p>-->
+                  <%= link_to blog_path(blog) do %>
+                    Read More <i class="uil uil-arrow-right align-middle"></i>
+                  <% end %>
                 </div>
               </div>
             </div>
-
-            <div class="col-md-6">
-              <div class="card-body content">
-                <%= link_to blog_path(@blog1), class: "h5 title text-dark d-block mb-0" do  %>
-                  <%= @blog1.title %>
-                <% end %>
-                <p class="text-muted mt-2 mb-2"><%= @blog1.body.first(300).html_safe %>.</p>
-                <%= link_to blog_path(@blog1) do  %>
-                  Read More <i class="uil uil-arrow-right align-middle"></i>
-                <% end %>
-              </div>
-            </div>
           </div>
-        </div>
-      </div><!--end col-->
-
-      <div class="col-lg-6 mb-4 pb-2">
-        <div class="card blog blog-primary shadow rounded overflow-hidden">
-          <div class="row align-items-center g-0">
-            <div class="col-md-6">
-              <div class="image card-img position-relative overflow-hidden">
-                <%= image_tag 'blog/RailsWebDeelopment.jpg', class: 'img-fluid', alt: '' %>
-                <div class="card-overlay"></div>
-                <div class="blog-tag">
-                  <a href="javascript:void(0)" class="badge text-bg-light">Branding</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="card-body content">
-                <%= link_to blog_path(@blog2), class: "h5 title text-dark d-block mb-0" do  %>
-                  <%= @blog2.title %>
-                <% end %>
-                <p class="text-muted mt-2 mb-2"><%= @blog2.body.first(120).html_safe %></p>
-                <%= link_to blog_path(@blog2) do  %>
-                  Read More <i class="uil uil-arrow-right align-middle"></i>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div><!--end col-->
-
-      <div class="col-lg-6 mb-4 pb-2">
-        <div class="card blog blog-primary shadow rounded overflow-hidden">
-          <div class="row align-items-center g-0">
-            <div class="col-md-6">
-              <div class="image card-img position-relative overflow-hidden">
-                <%= image_tag 'blog/03.jpg', class: 'img-fluid', alt: '' %>
-                <div class="card-overlay"></div>
-                <div class="blog-tag">
-                  <a href="javascript:void(0)" class="badge text-bg-light">Technology</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="card-body content">
-                <a href="blog-detail-two.html" class="h5 title text-dark d-block mb-0">The Right Hand of Business IT World</a>
-                <p class="text-muted mt-2 mb-2">The most well-known dummy text, in the 16th century.</p>
-                <a href="blog-detail-two.html" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div><!--end col-->
-
-      <div class="col-lg-6 mb-4 pb-2">
-        <div class="card blog blog-primary shadow rounded overflow-hidden">
-          <div class="row align-items-center g-0">
-            <div class="col-md-6">
-              <div class="image card-img position-relative overflow-hidden">
-                <%= image_tag 'blog/04.jpg', class: 'img-fluid', alt: '' %>
-                <div class="card-overlay"></div>
-                <div class="blog-tag">
-                  <a href="javascript:void(0)" class="badge text-bg-light">Personal</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="card-body content">
-                <a href="blog-detail-two.html" class="h5 title text-dark d-block mb-0">How to Create Your Own Viral Moments</a>
-                <p class="text-muted mt-2 mb-2">The most well-known dummy text, in the 16th century.</p>
-                <a href="blog-detail-two.html" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div><!--end col-->
-
-      <div class="col-lg-6 mb-4 pb-2">
-        <div class="card blog blog-primary shadow rounded overflow-hidden">
-          <div class="row align-items-center g-0">
-            <div class="col-md-6">
-              <div class="image card-img position-relative overflow-hidden">
-                <%= image_tag 'blog/05.jpg', class: 'img-fluid', alt: '' %>
-                <div class="card-overlay"></div>
-                <div class="blog-tag">
-                  <a href="javascript:void(0)" class="badge text-bg-light">Business</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="card-body content">
-                <a href="blog-detail-two.html" class="h5 title text-dark d-block mb-0">How to Write a Business Plan For Any Business</a>
-                <p class="text-muted mt-2 mb-2">The most well-known dummy text, in the 16th century.</p>
-                <a href="blog-detail-two.html" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div><!--end col-->
-
-      <div class="col-lg-6 mb-4 pb-2">
-        <div class="card blog blog-primary shadow rounded overflow-hidden">
-          <div class="row align-items-center g-0">
-            <div class="col-md-6">
-              <div class="image card-img position-relative overflow-hidden">
-                <%= image_tag 'blog/06.jpg', class: 'img-fluid', alt: '' %>
-                <div class="card-overlay"></div>
-                <div class="blog-tag">
-                  <a href="javascript:void(0)" class="badge text-bg-light">Marketing</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="card-body content">
-                <a href="blog-detail-two.html" class="h5 title text-dark d-block mb-0">Seeing the Customer Journey More Clearly</a>
-                <p class="text-muted mt-2 mb-2">The most well-known dummy text, in the 16th century.</p>
-                <a href="blog-detail-two.html" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div><!--end col-->
-
-      <div class="col-lg-6 mb-4 pb-2">
-        <div class="card blog blog-primary shadow rounded overflow-hidden">
-          <div class="row align-items-center g-0">
-            <div class="col-md-6">
-              <div class="image card-img position-relative overflow-hidden">
-                <%= image_tag 'blog/07.jpg', class: 'img-fluid', alt: '' %>
-                <div class="card-overlay"></div>
-                <div class="blog-tag">
-                  <a href="javascript:void(0)" class="badge text-bg-light">Production</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="card-body content">
-                <a href="blog-detail-two.html" class="h5 title text-dark d-block mb-0">The Signs of a Highly Giftable Product</a>
-                <p class="text-muted mt-2 mb-2">The most well-known dummy text, in the 16th century.</p>
-                <a href="blog-detail-two.html" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div><!--end col-->
-
-      <div class="col-lg-6 mb-4 pb-2">
-        <div class="card blog blog-primary shadow rounded overflow-hidden">
-          <div class="row align-items-center g-0">
-            <div class="col-md-6">
-              <div class="image card-img position-relative overflow-hidden">
-                <%= image_tag 'blog/08.jpg', class: 'img-fluid', alt: '' %>
-                <div class="card-overlay"></div>
-                <div class="blog-tag">
-                  <a href="javascript:void(0)" class="badge text-bg-light">Business</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="card-body content">
-                <a href="blog-detail-two.html" class="h5 title text-dark d-block mb-0">Defining Your Business Target Audience</a>
-                <p class="text-muted mt-2 mb-2">The most well-known dummy text, in the 16th century.</p>
-                <a href="blog-detail-two.html" class="link text-dark">Read More <i class="uil uil-arrow-right align-middle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div><!--end col-->
+        </div><!--end col-->
+      <% end %>
     </div><!--end row-->
 
     <div class="row">
