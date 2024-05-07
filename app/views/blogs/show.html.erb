@@ -2,7 +2,14 @@
     .ql-editor {
         tab-size: 20;
         -moz-tab-size: 20;
-        -o-tab-size:  20;
+        -o-tab-size: 20;
+        border: none !important;
+    }
+    .ql-toolbar {
+        border: none !important;
+    }
+    .ql-container {
+        border: none !important;
     }
     .moveRight {
         text-align: right; /* Move text to the right */
@@ -26,14 +33,16 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col moveRight">
-      <%= link_to 'Edit', edit_blog_path(@blog), class: 'btn btn-primary' %>
+      <% if current_user && current_user.id.eql?(1) %>
+        <%= link_to 'Edit', edit_blog_path(@blog), class: 'btn btn-primary' %>
+      <% end %>
     </div>
   </div>
 
   <div class="row">
     <div class="row">
       <div class="col">
-        <%= @blog.title %>
+       <h2 class="text-dark"><%= @blog.title %></h2> 
       </div>
     </div>
   </div>
