@@ -1,9 +1,7 @@
 class BlogsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update]
   def index
-    @blogs = Blog.all
-      @blog1 = Blog.find(25)
-      @blog2 = Blog.find(36)
+    @blogs = Blog.all.limit(8)
   end
 
   def new
@@ -47,7 +45,11 @@ class BlogsController < ApplicationController
   
   private
 
-  def blog_params
+  def show_limit
+    
+  end
+
+    def blog_params
     params.require(:blog).permit(:title, :body, :blog_image)
   end
 end

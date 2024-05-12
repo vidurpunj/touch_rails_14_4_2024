@@ -7,7 +7,11 @@
         <div class="title-heading text-center">
           <h5 class="heading fw-semibold page-heading text-white title-dark">Blog & News</h5>
           <p class="text-white-50 para-desc mx-auto mb-0">Our Latest Blog and News in List
-            Layouts <%= link_to 'Create', new_blog_path %></p>
+            Layouts
+            <% if current_user && current_user.id.eql?(1) %>
+              <%= link_to 'Create', new_blog_path %>
+            <% end %>
+          </p>
         </div>
       </div><!--end col-->
     </div><!--end row-->
@@ -38,7 +42,7 @@
                   <%= link_to blog_path(blog), class: "h5 title text-dark d-block mb-0" do %>
                     <%= blog.title %>
                   <% end %>
-<!--                  <p class="text-muted mt-2 mb-2"><%#= blog.body.first(100).html_safe %>.</p>-->
+                  <!--                  <p class="text-muted mt-2 mb-2"><%#= blog.body.first(100).html_safe %>.</p>-->
                   <%= link_to blog_path(blog) do %>
                     Read More <i class="uil uil-arrow-right align-middle"></i>
                   <% end %>
