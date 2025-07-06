@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: bundle exec rails s -b 0.0.0.0
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@host.docker.internal:5432/touch_rails_14_4_2024_development
+      SECRET_KEY_BASE: "f229b92260f45ca89067ac6a97f7c5472b37c47bba5356a49a211c319d70dcd062ce6a059dcd5d97eb093da610efca6202c54ab30de5a735ac2d33a0f6341d25"
+      RAILS_LOG_TO_STDOUT: "true"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

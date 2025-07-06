@@ -49,7 +49,8 @@ Rails.application.configure do
   # config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  # Set it to false in production while doing a development
+  # config.force_ssl = true
 
   # Log to STDOUT by default
   # config.logger = ActiveSupport::Logger.new(STDOUT)
@@ -62,7 +63,9 @@ Rails.application.configure do
   # "info" includes generic and useful information about system operation, but avoids logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII). If you
   # want to log everything, set the level to "debug".
-  config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
+  # config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
+  # Set to Debug mode
+  config.log_level = "debug"
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store

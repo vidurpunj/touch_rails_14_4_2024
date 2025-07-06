@@ -18,8 +18,21 @@ ENV RAILS_ENV="production" \
 FROM base as build
 
 # Install packages needed to build gems
+# Install packages needed to build gems and compile assets
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config
+    apt-get install --no-install-recommends -y \
+      build-essential \
+      git \
+      libpq-dev \
+      libvips \
+      pkg-config \
+      curl \
+      nodejs \
+      yarn \
+      file \
+      imagemagick \
+      ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
@@ -32,6 +45,10 @@ COPY . .
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
+
+# We do not need below 2 line as they below file are not present in root of the application
+#COPY package.json yarn.lock ./
+#RUN yarn install --frozen-lockfile
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile

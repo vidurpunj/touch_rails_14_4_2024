@@ -35,3 +35,9 @@
 /app/assets/builds/*
 !/app/assets/builds/.keep
 /public/assets
+// ignore these files aslo
+node_modules
+log
+tmp
+.git
+*.log

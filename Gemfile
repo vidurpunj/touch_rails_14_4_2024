@@ -40,9 +40,18 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'simplecov', require: false
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false 
 end
 
 gem 'byebug'
 gem 'sitemap_generator'
 gem 'devise'
 gem 'carrierwave', '~> 3.0'
+
+## Api documentation and testing
+gem 'rswag'
+gem 'rspec-rails'
